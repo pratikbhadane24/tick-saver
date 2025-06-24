@@ -1,0 +1,27 @@
+[project]
+name = "tick-processor"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Pratik Bhadane",email = "pratikbhadane24@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.9,<4.0"
+dependencies = [
+    "websockets (>=15.0.1,<16.0.0)",
+    "apscheduler (>=3.11.0,<4.0.0)",
+    "redis (>=6.2.0,<7.0.0)",
+    "python-dotenv (>=1.1.0,<2.0.0)",
+    "six (>=1.17.0,<2.0.0)",
+    "celery (>=5.5.3,<6.0.0)",
+    "chromedriver-autoinstaller (>=0.6.4,<0.7.0)",
+    "selenium (>=4.33.0,<5.0.0)",
+    "kiteconnect (>=5.0.1,<6.0.0)",
+    "pyotp (>=2.9.0,<3.0.0)",
+    "clickhouse-connect (>=0.8.17,<0.9.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
