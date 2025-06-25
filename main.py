@@ -136,7 +136,7 @@ async def main():
     task_scheduler.start()
     print("Initializing ZeroDha")
     global cirrus_token_to_broker_token_mapping
-    broker_token_list_to_share, cirrus_token_to_broker_token_mapping = fetch_all_tokens_for_zerodha(['CT:1:1:NIFTY'])
+    broker_token_list_to_share, cirrus_token_to_broker_token_mapping = fetch_all_tokens_for_zerodha(['CT*'])
     token_limit_per_connection = 3000
     connection_per_account = 3
 
@@ -144,7 +144,7 @@ async def main():
     chunk_index = 0
 
     runner_key_start = 1
-    runner_key_end = 2
+    runner_key_end = 12
     runners_names = [f"TS{runner_key}" for runner_key in range(runner_key_start, runner_key_end + 1)]
     print("Runners Names: ", runners_names)
 
