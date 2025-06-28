@@ -140,7 +140,116 @@ if __name__ == "__main__":
             "api_key": "g98eqgqqar520f3q",
             "secret_key": "z1atd697szhmo4jzq287nwuesc8w6iyd",
         },
-        
+        {
+            "client_id": "ZGN479",
+            "user_password": "Chelsea@pratik7",
+            "totp_key": "NV4GMVI2TJNTE5RYNHVDQ7UROQGCZ3WE",
+            "redirect_url": "https://www.google.com",
+
+            "name": "TS2",
+            "api_key": "lt1ggmxze1c5yc7h",
+            "secret_key": "v5i33xz1y1030sk3dgmsw1wuvv6hyt71",
+        },
+        {
+            "client_id": "ZGN479",
+            "user_password": "Chelsea@pratik7",
+            "totp_key": "NV4GMVI2TJNTE5RYNHVDQ7UROQGCZ3WE",
+            "redirect_url": "https://www.google.com",
+
+            "name": "TS3",
+            "api_key": "6kljxy4h5ykxls69",
+            "secret_key": "w8lp59woc979x2mf7g5ajadvexldf7sa",
+        },
+        {
+            "client_id": "ZGN479",
+            "user_password": "Chelsea@pratik7",
+            "totp_key": "NV4GMVI2TJNTE5RYNHVDQ7UROQGCZ3WE",
+            "redirect_url": "https://www.google.com",
+
+            "name": "TS4",
+            "api_key": "jnkvk8nct8s0mgs2",
+            "secret_key": "ld2ve91jjq5hz5kx3bvpdsr8d77ok2s5",
+        },
+        {
+            "client_id": "ZGN479",
+            "user_password": "Chelsea@pratik7",
+            "totp_key": "NV4GMVI2TJNTE5RYNHVDQ7UROQGCZ3WE",
+            "redirect_url": "https://www.google.com",
+
+            "name": "TS5",
+            "api_key": "jpqfxfpn9xwk89hc",
+            "secret_key": "6h4cndasfbkdomnjf7yqqhudh6aawwfd",
+        },
+        {
+            "client_id": "ZGN479",
+            "user_password": "Chelsea@pratik7",
+            "totp_key": "NV4GMVI2TJNTE5RYNHVDQ7UROQGCZ3WE",
+            "redirect_url": "https://www.google.com",
+
+            "name": "TS6",
+            "api_key": "mmtojcpd93xcbw2o",
+            "secret_key": "6sormf7b13q8d2qr2v9klmxuxjnx80sk",
+        },
+        {
+            "client_id": "ZGN479",
+            "user_password": "Chelsea@pratik7",
+            "totp_key": "NV4GMVI2TJNTE5RYNHVDQ7UROQGCZ3WE",
+            "redirect_url": "https://www.google.com",
+
+            "name": "TS7",
+            "api_key": "o15kzfd2d3mw299w",
+            "secret_key": "q0bte7n96b3fkjo6wn695016tl8t4v68",
+        },
+        {
+            "client_id": "ZGN479",
+            "user_password": "Chelsea@pratik7",
+            "totp_key": "NV4GMVI2TJNTE5RYNHVDQ7UROQGCZ3WE",
+            "redirect_url": "https://www.google.com",
+
+            "name": "TS8",
+            "api_key": "7rgqhuy4jy7ay3le",
+            "secret_key": "ddd5m3yu14y8e1z2l0lladobwj4n04of",
+        },
+        {
+            "client_id": "ZGN479",
+            "user_password": "Chelsea@pratik7",
+            "totp_key": "NV4GMVI2TJNTE5RYNHVDQ7UROQGCZ3WE",
+            "redirect_url": "https://www.google.com",
+
+            "name": "TS9",
+            "api_key": "l30m1qkkfqylzuj2",
+            "secret_key": "1n93mqpvikx1adjyc1eykn9luk5ra1wk",
+        },
+        {
+            "client_id": "ZGN479",
+            "user_password": "Chelsea@pratik7",
+            "totp_key": "NV4GMVI2TJNTE5RYNHVDQ7UROQGCZ3WE",
+            "redirect_url": "https://www.google.com",
+
+            "name": "TS10",
+            "api_key": "ymzzw0gew0fsoek0",
+            "secret_key": "6cf6lwgukf25q7pjwnifyzrtn3641dm1",
+        },
+        {
+            "client_id": "ZGN479",
+            "user_password": "Chelsea@pratik7",
+            "totp_key": "NV4GMVI2TJNTE5RYNHVDQ7UROQGCZ3WE",
+            "redirect_url": "https://www.google.com",
+
+            "name": "TS11",
+            "api_key": "6t5ttuvmaz8jx8r3",
+            "secret_key": "sy3evfozi2uf2dkqkfsh4gbro53y3ee4",
+        },
+        {
+            "client_id": "ZGN479",
+            "user_password": "Chelsea@pratik7",
+            "totp_key": "NV4GMVI2TJNTE5RYNHVDQ7UROQGCZ3WE",
+            "redirect_url": "https://www.google.com",
+
+            "name": "TS12",
+            "api_key": "4fr9u2q8v6drbfsl",
+            "secret_key": "ckb79kiv5abzo770vq2u9axvdtrhpdg1",
+        },
     ]
 
     for acc in accounts:
