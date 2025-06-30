@@ -15,11 +15,17 @@ candle_redis_uri = os.environ.get('CANDLE_REDIS_URL')
 try:
     REDIS_DB_CLIENT = redis.Redis(host=redis_host, port=int(redis_port), password=redis_password,
                                   max_connections=1000, db=redis_db_no)
+    if not REDIS_DB_CLIENT.ping():
+        raise ConnectionError("Failed to connect to Redis DB")
+    logging.info("Connected to Redis DB successfully")
 except Exception as e:
     logging.error(f"Error connecting to Redis DB: {e}")
 
 
 try:
     REDIS_DATA_STORE = redis.from_url(candle_redis_uri)
+    if not REDIS_DATA_STORE.ping():
+        raise ConnectionError("Failed to connect to Redis data store")
+    logging.info("Connected to Redis data store successfully")
 except Exception as e:
     logging.error(f"Error connecting to Redis DB: {e}")
