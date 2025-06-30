@@ -16,3 +16,9 @@ try:
                                   max_connections=1000, db=redis_db_no)
 except Exception as e:
     logging.error(f"Error connecting to Redis DB: {e}")
+
+
+try:
+    REDIS_DATA_STORE = redis.from_url("redis://localhost:6379/0")
+except Exception as e:
+    logging.error(f"Error connecting to Redis DB: {e}")

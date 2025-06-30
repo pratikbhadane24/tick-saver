@@ -1,48 +1,53 @@
+import json
 import threading
 from collections import defaultdict
 from datetime import datetime
 
-from clickhouse_connect import get_client
+from database import REDIS_DATA_STORE
+
+# from clickhouse_connect import get_client
 
 time_lower_limit = datetime.now().replace(hour=9, minute=14, second=0, microsecond=0)
 time_upper_limit = datetime.now().replace(hour=15, minute=31, second=0, microsecond=0)
 
-clickhouse_client = get_client(host='localhost', port=8123)
+# clickhouse_client = get_client(host='localhost', port=8123)
+
 ohlc_snaps = defaultdict(lambda: defaultdict(lambda: {
     "open": None, "high": float("-inf"), "low": float("inf"), "close": None,
     "atp": 0.0, "volume": 0, "oi": 0
 }))
 
 
-def ensure_table_exists():
-    tables = clickhouse_client.query("SHOW TABLES").result_rows
-    if not any(row[0] == 'ohlc' for row in tables):
-        clickhouse_client.command("""
-                                  CREATE TABLE ohlc
-                                  (
-                                      token     String,
-                                      timestamp DateTime('Asia/Kolkata'),
-                                      open      Float32,
-                                      high      Float32,
-                                      low       Float32,
-                                      close     Float32,
-                                      atp       Nullable(Float32),
-                                      volume    Nullable(UInt64),
-                                      oi        Nullable(UInt64)
-                                  ) ENGINE = ReplacingMergeTree()
-        ORDER BY (token, timestamp)
-                                  """)
-        print("✅ ClickHouse OHLC table created.")
-
-
-ensure_table_exists()
+# def ensure_table_exists():
+#     tables = clickhouse_client.query("SHOW TABLES").result_rows
+#     if not any(row[0] == 'ohlc' for row in tables):
+#         clickhouse_client.command("""
+#                                   CREATE TABLE ohlc
+#                                   (
+#                                       token     String,
+#                                       timestamp DateTime('Asia/Kolkata'),
+#                                       open      Float32,
+#                                       high      Float32,
+#                                       low       Float32,
+#                                       close     Float32,
+#                                       atp       Nullable(Float32),
+#                                       volume    Nullable(UInt64),
+#                                       oi        Nullable(UInt64)
+#                                   ) ENGINE = ReplacingMergeTree()
+#         ORDER BY (token, timestamp)
+#                                   """)
+#         print("✅ ClickHouse OHLC table created.")
+#
+#
+# ensure_table_exists()
 
 
 def save_candles_to_storage():
-    ensure_table_exists()
+    # ensure_table_exists()
     rows = []
     current_minute = datetime.now().replace(second=0, microsecond=0)
 
+    pipe = REDIS_DATA_STORE.pipeline()
     for token, minutes in list(ohlc_snaps.items()):
         for minute, candle in list(minutes.items()):
             if current_minute <= minute:
@@ -65,18 +70,21 @@ def save_candles_to_storage():
                 candle.get("volume"),
                 candle.get("oi"),
             ))
+            pipe.hset(f"MINUTE_CANDLES:{token}", minute.strftime("%H:%M"), json.dumps(candle))
             del ohlc_snaps[token][minute]
 
         if not ohlc_snaps[token]:
             del ohlc_snaps[token]
 
     if rows:
-        clickhouse_client.insert(
-            table='ohlc',
-            data=rows,
-            column_names=['token', 'timestamp', 'open', 'high', 'low', 'close', 'atp', 'volume', 'oi']
-        )
-        print(f"✅ Inserted {len(rows)} unique candles to ClickHouse.")
+        pipe.execute()
+        # clickhouse_client.insert(
+        #     table='ohlc',
+        #     data=rows,
+        #     column_names=['token', 'timestamp', 'open', 'high', 'low', 'close', 'atp', 'volume', 'oi']
+        # )
+
+        print(f"✅ Inserted {len(rows)} unique candles to REDIS.")
     else:
         print("⚠️ No candles to insert.")
 
